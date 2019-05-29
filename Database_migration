@@ -1,0 +1,19 @@
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES ('214', '24', 'Document', 'document', '1', '1', '1', '0', CURRENT_TIMESTAMP);
+
+CREATE TABLE `patient_documents` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `patient_id` int(11) NOT NULL,
+ `doc_path` varchar(250) DEFAULT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+ALTER TABLE `patient_documents` ADD `note` VARCHAR(200) NULL DEFAULT NULL AFTER `updated_at`;
+
+ALTER TABLE `patient_documents` ADD `document_name` VARCHAR(100) NULL AFTER `note`;
+
+ALTER TABLE `patient_documents` CHANGE `doc_path` `doc_path` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL;
+
+ALTER TABLE `patient_documents` ADD `document_date` DATE NULL AFTER `document_name`;

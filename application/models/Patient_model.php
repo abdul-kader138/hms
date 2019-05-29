@@ -275,6 +275,43 @@ class Patient_model extends CI_Model {
         }
     }
 
+//    a.kader
+
+    function add_pDocument($data) {
+        if (isset($data["id"])) {
+            $this->db->where("id", $data["id"])->update("patient_documents", $data);
+        } else {
+            $this->db->insert("patient_documents", $data);
+            return $this->db->insert_id();
+        }
+    }
+
+    public function getDocumentDetails($id) {
+        $query = $this->db->where('patient_id', $id)->get('patient_documents');
+        if ($query->num_rows() > 0) {
+            foreach (($query->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+
+    public function deleteIpdPatientDocuments($id) {
+        $this->db->where('id', $id)
+            ->delete('patient_documents');
+    }
+
+    public function getDocumentDetailsById($id) {
+        $query = $this->db->where('id', $id)->get('patient_documents');
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        }
+        return FALSE;
+    }
+
+//    a.kader
+
     function getDiagnosisDetails($id) {
 
         $query1 = $this->db->select('diagnosis.*')
@@ -378,6 +415,8 @@ class Patient_model extends CI_Model {
         $query = $this->db->where('patients.id', $id)->get('patients');
         return $query->row_array();
     }
+
+
 
     public function search($id) {
         $this->db->select('appointment.*,staff.id as sid,staff.name,staff.surname,patients.id as pid,patients.patient_unique_id');
