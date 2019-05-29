@@ -428,6 +428,7 @@ $lang['inward'] = 'Inward';
 $lang['ip_address'] = 'IP Address';
 $lang['ipd'] = 'IPD';
 $lang['ipd_in_patient'] = 'IPD - In Patient';
+$lang['ipd_patient'] = 'IPD - Patients';
 $lang['ipd_no'] = 'IPD No';
 $lang['ipd_patient_registration'] = 'IPD Patient Registration';
 $lang['ipd_patient_registration_message'] = 'Dear Edward Thomas your IPD registration is successful at Smart Hospital with Patient Id: 4612 and IPD No: 54545';

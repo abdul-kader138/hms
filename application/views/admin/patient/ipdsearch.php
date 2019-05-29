@@ -53,7 +53,7 @@ $genderList = $this->customlib->getGender();
                                         <th><?php echo $this->lang->line('patient') . " " . $this->lang->line('id'); ?></th>
                                         <th><?php echo $this->lang->line('gender'); ?></th>
                                         <th><?php echo $this->lang->line('phone'); ?></th>
-                                        <th><?php echo $this->lang->line('consultant'); ?></th>
+                                        <th><?php echo $this->lang->line('doctor'); ?></th>
                                         <th><?php echo $this->lang->line('bed'); ?></th>
                                         <th class="text-right"><?php echo $this->lang->line('charges') . " (" . $currency_symbol . ")"; ?></th>
                                         <th class="text-right"><?php echo $this->lang->line('payment') . " (" . $currency_symbol . ")"; ?></th>

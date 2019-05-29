@@ -147,12 +147,14 @@
                             <?php } ?>
                             <div class="navbar-custom-menu">
                                 <ul class="nav navbar-nav headertopmenu"> 
-                                    <li class="">
-                                        <?php if ($this->rbac->hasPrivilege('bed_status', 'can_view')) { ?><a  data-target="modal" href="#" id='beddata' data-loading-text="<i class='fa fa-spinner fa-spin '></i> <?php echo $this->lang->line('loading') ?>" onclick="getbedstatus()"><i class="fas fa-bed cal15"></i> <span class="spanDM"><?php echo $this->lang->line('bed') . " " . $this->lang->line('status'); ?></span></a>
+<!--                                    <li class="">-->
+<!--                                        --><?php //if ($this->rbac->hasPrivilege('bed_status', 'can_view')) { ?><!--<a  data-target="modal" href="#" id='beddata' data-loading-text="<i class='fa fa-spinner fa-spin '></i> --><?php //echo $this->lang->line('loading') ?><!--" onclick="getbedstatus()"><i class="fas fa-bed cal15"></i> <span class="spanDM">--><?php //echo $this->lang->line('bed') . " " . $this->lang->line('status'); ?><!--</span></a>-->
+<!---->
+<!--                                        </li>-->
+<!--                                        --><?php
+//                                    }?>
 
-                                        </li>
-                                        <?php
-                                    }
+                                    <?php
                                     if ($this->module_lib->hasActive('calendar_to_do_list')) {
                                         if ($this->rbac->hasPrivilege('calendar_to_do_list', 'can_view')) {
                                             ?>

@@ -29,95 +29,106 @@
                                 <?php
                             
                         } }
-                        if ($this->module_lib->hasActive('OPD')) {
-                            if($this->rbac->hasPrivilege('opd_patient', 'can_view')) {
-                                ?>
-								<li class="treeview <?php echo set_Topmenu('OPD_Out_Patient'); ?>">
-                                    <a href="<?php echo base_url(); ?>admin/patient/search">
-                                        <i class="fas fa-stethoscope"></i> <span> <?php echo $this->lang->line('opd_out_patient');?></span> 
-                                    </a>
-                                    
-                                </li>
-                            <?php } } ?>
+//                        if ($this->module_lib->hasActive('OPD')) {
+//                            if($this->rbac->hasPrivilege('opd_patient', 'can_view')) {
+//                                ?>
+<!--								<li class="treeview --><?php //echo set_Topmenu('OPD_Out_Patient'); ?><!--">-->
+<!--                                    <a href="--><?php //echo base_url(); ?><!--admin/patient/search">-->
+<!--                                        <i class="fas fa-stethoscope"></i> <span> --><?php //echo $this->lang->line('opd_out_patient');?><!--</span> -->
+<!--                                    </a>-->
+<!--                                    -->
+<!--                                </li>-->
+<!--                            --><?php //} }
+                            ?>
                              <?php
                        if ($this->module_lib->hasActive('IPD')) {
                            if($this->rbac->hasPrivilege('ipd_patient', 'can_view')) {
                                 ?>
 								<li class="treeview <?php echo set_Topmenu('IPD_in_patient'); ?>">
                                     <a href="<?php echo base_url() ?>admin/patient/ipdsearch">
-                                        <i class="fas fa-procedures" aria-hidden="true"></i> <span> <?php echo $this->lang->line('ipd_in_patient');?></span>
+                                        <i class="fas fa-procedures" aria-hidden="true"></i> <span> <?php echo $this->lang->line('ipd_patient');?></span>
                                     </a>
                                     
                                 </li>
                              <?php } } ?>
                               <?php
-                        if ($this->module_lib->hasActive('pharmacy')) {
-                            if($this->rbac->hasPrivilege('pharmacy bill', 'can_view') ) {
-                                ?>   
-								<li class="treeview <?php echo set_Topmenu('pharmacy'); ?>">
-                                    <a href="<?php echo base_url(); ?>admin/pharmacy/bill">
-                                       <i class="fas fa-mortar-pestle"></i> <span> <?php echo $this->lang->line('pharmacy');?></span>
-                                      
-                                    </a>
-                                </li>
-                          <?php } } ?>
+//                        if ($this->module_lib->hasActive('pharmacy')) {
+//                            if($this->rbac->hasPrivilege('pharmacy bill', 'can_view') ) {
+//                                ?><!--   -->
+<!--								<li class="treeview --><?php //echo set_Topmenu('pharmacy'); ?><!--">-->
+<!--                                    <a href="--><?php //echo base_url(); ?><!--admin/pharmacy/bill">-->
+<!--                                       <i class="fas fa-mortar-pestle"></i> <span> --><?php //echo $this->lang->line('pharmacy');?><!--</span>-->
+<!--                                      -->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                          --><?php //} }
+
+                          ?>
                            <?php
-                        if ($this->module_lib->hasActive('pathology')) {
-                            if($this->rbac->hasPrivilege('pathology test', 'can_view') ) {
-                                ?>      
-						        <li class="treeview <?php echo set_Topmenu('pathology'); ?>">
-                                    <a href="<?php echo base_url(); ?>admin/pathology/search">
-                                        <i class="fas fa-flask"></i> <span><?php echo $this->lang->line('pathology');?></span>
-                                       
-                                    </a>
-                                </li>
-                              <?php } } ?>
+//                        if ($this->module_lib->hasActive('pathology')) {
+//                            if($this->rbac->hasPrivilege('pathology test', 'can_view') ) {
+//                                ?><!--      -->
+<!--						        <li class="treeview --><?php //echo set_Topmenu('pathology'); ?><!--">-->
+<!--                                    <a href="--><?php //echo base_url(); ?><!--admin/pathology/search">-->
+<!--                                        <i class="fas fa-flask"></i> <span>--><?php //echo $this->lang->line('pathology');?><!--</span>-->
+<!--                                       -->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                              --><?php //} }
+
+                              ?>
                                <?php
-                        if ($this->module_lib->hasActive('radiology')) {
-                            if($this->rbac->hasPrivilege('radiology test', 'can_view') ) {
-                                ?>  
-                               <li class="treeview <?php echo set_Topmenu('radiology'); ?>"> 
-                                    <a href="<?php echo base_url();?>admin/radio/search">
-                                        <i class="fas fa-microscope"></i> <span><?php echo $this->lang->line('radiology');?></span>
-                                     
-                                    </a>
-                                  
-                                </li>
-                            <?php } } ?>    
+//                        if ($this->module_lib->hasActive('radiology')) {
+//                            if($this->rbac->hasPrivilege('radiology test', 'can_view') ) {
+//                                ?><!--  -->
+<!--                               <li class="treeview --><?php //echo set_Topmenu('radiology'); ?><!--"> -->
+<!--                                    <a href="--><?php //echo base_url();?><!--admin/radio/search">-->
+<!--                                        <i class="fas fa-microscope"></i> <span>--><?php //echo $this->lang->line('radiology');?><!--</span>-->
+<!--                                     -->
+<!--                                    </a>-->
+<!--                                  -->
+<!--                                </li>-->
+<!--                            --><?php //} }
+
+                            ?>
 				            <?php
-                       if ($this->module_lib->hasActive('operation_theatre')) {
-                           if($this->rbac->hasPrivilege('ot_patient', 'can_view')) {
-                                ?>  
-								<li class="treeview <?php echo set_Topmenu('operation_theatre');?> ">
-                                    <a href="<?php echo base_url() ?>admin/operationtheatre/otsearch">
-                                        <i class="fas fa-cut"></i> <span><?php echo $this->lang->line('operation_theatre');?></span>
-                                    </a>
-                                    
-                                </li>
-                          <?php } } ?>
+//                       if ($this->module_lib->hasActive('operation_theatre')) {
+//                           if($this->rbac->hasPrivilege('ot_patient', 'can_view')) {
+//                                ?><!--  -->
+<!--								<li class="treeview --><?php //echo set_Topmenu('operation_theatre');?><!-- ">-->
+<!--                                    <a href="--><?php //echo base_url() ?><!--admin/operationtheatre/otsearch">-->
+<!--                                        <i class="fas fa-cut"></i> <span>--><?php //echo $this->lang->line('operation_theatre');?><!--</span>-->
+<!--                                    </a>-->
+<!--                                    -->
+<!--                                </li>-->
+<!--                          --><?php //} }
+
+                          ?>
                             <?php
-                       if ($this->module_lib->hasActive('blood_bank')) {
-                           if($this->rbac->hasPrivilege('blood_bank_status', 'can_view')) {
-                                ?>      
-								<li class="treeview <?php echo set_Topmenu('blood_bank'); ?>">
-                                    <a href="<?php echo base_url()?>admin/bloodbankstatus/">
-                                        <i class="fas fa-tint"></i> <span><?php echo $this->lang->line('blood_bank');?></span>
-                                        
-                                    </a>
-                                   
-                                </li>
-                          <?php } } ?>
+//                       if ($this->module_lib->hasActive('blood_bank')) {
+//                           if($this->rbac->hasPrivilege('blood_bank_status', 'can_view')) {
+//                                ?><!--      -->
+<!--								<li class="treeview --><?php //echo set_Topmenu('blood_bank'); ?><!--">-->
+<!--                                    <a href="--><?php //echo base_url()?><!--admin/bloodbankstatus/">-->
+<!--                                        <i class="fas fa-tint"></i> <span>--><?php //echo $this->lang->line('blood_bank');?><!--</span>-->
+<!--                                        -->
+<!--                                    </a>-->
+<!--                                   -->
+<!--                                </li>-->
+<!--                          --><?php //} }
+
+                          ?>
                             <?php
-                       if ($this->module_lib->hasActive('tpa_management')) {
-                           if($this->rbac->hasPrivilege('organisation', 'can_view')) {
-                                ?>      
-								<li class="treeview <?php echo set_Topmenu('tpa_management');?>">
-                                    <a href="<?php echo base_url()?>admin/tpamanagement">
-                                        <i class="fas fa-umbrella"></i> <span><?php echo $this->lang->line('tpa_management');?></span>
-                                    </a>
-                                    
-                                </li>
-                            <?php } } 
+//                       if ($this->module_lib->hasActive('tpa_management')) {
+//                           if($this->rbac->hasPrivilege('organisation', 'can_view')) {
+//                                ?><!--      -->
+<!--								<li class="treeview --><?php //echo set_Topmenu('tpa_management');?><!--">-->
+<!--                                    <a href="--><?php //echo base_url()?><!--admin/tpamanagement">-->
+<!--                                        <i class="fas fa-umbrella"></i> <span>--><?php //echo $this->lang->line('tpa_management');?><!--</span>-->
+<!--                                    </a>-->
+<!--                                    -->
+<!--                                </li>-->
+<!--                            --><?php //} }
                             if (($this->module_lib->hasActive('income')) || ($this->module_lib->hasActive('expense'))) {
                               if(($this->rbac->hasPrivilege('income', 'can_view')) || ($this->rbac->hasPrivilege('expense', 'can_view'))) {
                             ?>
@@ -141,19 +152,19 @@
                                 </li>
                                 <?php }
                               } 
-                                  if ($this->module_lib->hasActive('ambulance')) {
-                                     if($this->rbac->hasPrivilege('ambulance','can_view')){
-                                ?>
-                                <li class="treeview <?php echo set_Topmenu('Transport');?>">
-                                    <a href="<?php echo base_url(); ?>admin/vehicle/search">
-                                       <i class="fas fa-ambulance" aria-hidden="true"></i> 
-                                       <span> <?php echo $this->lang->line('ambulance');?></span> 
-                                      
-                                    </a>
-                                    
-                                </li>
-                                <?php } }
-                             
+//                                  if ($this->module_lib->hasActive('ambulance')) {
+//                                     if($this->rbac->hasPrivilege('ambulance','can_view')){
+//                                ?>
+<!--                                <li class="treeview --><?php //echo set_Topmenu('Transport');?><!--">-->
+<!--                                    <a href="--><?php //echo base_url(); ?><!--admin/vehicle/search">-->
+<!--                                       <i class="fas fa-ambulance" aria-hidden="true"></i> -->
+<!--                                       <span> --><?php //echo $this->lang->line('ambulance');?><!--</span> -->
+<!--                                      -->
+<!--                                    </a>-->
+<!--                                    -->
+<!--                                </li>-->
+<!--                                --><?php //} }
+//
 
                         if ($this->module_lib->hasActive('human_resource')) {
                             if (($this->rbac->hasPrivilege('staff', 'can_view') ||
