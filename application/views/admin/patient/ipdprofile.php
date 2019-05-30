@@ -130,14 +130,14 @@ $genderList = $this->customlib->getGender();
                     <div class="nav-tabs-custom border0" id="tabs">
 
                         <ul class="nav nav-tabs">
-                            <?php if ($this->rbac->hasPrivilege('consultant register', 'can_view')) { ?>
-
-                                <li class="active">
-                                    <a href="#consultant_register" data-toggle="tab" aria-expanded="true"><i
-                                                class="fas fa-file-prescription"></i> <?php echo $this->lang->line('consultant') . " " . $this->lang->line('register'); ?>
-                                    </a>
-                                </li>
-                            <?php } ?>
+<!--                            --><?php //if ($this->rbac->hasPrivilege('consultant register', 'can_view')) { ?>
+<!---->
+<!--                                <li class="active">-->
+<!--                                    <a href="#consultant_register" data-toggle="tab" aria-expanded="true"><i-->
+<!--                                                class="fas fa-file-prescription"></i> --><?php //echo $this->lang->line('consultant') . " " . $this->lang->line('register'); ?>
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            --><?php //} ?>
                             <?php if ($this->rbac->hasPrivilege('ipd diagnosis', 'can_view')) { ?>
 
                                 <li>
@@ -223,7 +223,7 @@ $genderList = $this->customlib->getGender();
                                                onclick="holdModal('add_instruction')" data-toggle="modal"><i
                                                         class="fas fa-plus"></i> <?php echo $this->lang->line('add') . " " . $this->lang->line('consultant') . " " . $this->lang->line('instruction'); ?>
                                             </a>
-                                        </div><!--./impbtnview-->
+                                        </div>
                                     <?php }
                                 }
                                 ?>
@@ -268,6 +268,8 @@ $genderList = $this->customlib->getGender();
                                     </table>
                                 </div>
                             </div>
+
+
                             <!-- documents(a.kader) -->
                             <div class="tab-pane" id="pDocument">
                                 <?php

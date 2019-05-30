@@ -67,37 +67,40 @@
 
 
             <?php
-            if ($this->module_lib->hasActive('OPD')) {
-                if ($this->rbac->hasPrivilege('opd_income_widget', 'can_view')) {
-                    ?>
+//            if ($this->module_lib->hasActive('OPD')) {
+//                if ($this->rbac->hasPrivilege('opd_income_widget', 'can_view')) {
+//                    ?>
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20-->
+<!--                         ">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/patient/search') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-stethoscope"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('opd') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//                                        if (!empty($opd_income)) {
+//                                            echo $currency_symbol . $opd_income;
+//                                        } else {
+//                                            echo "0";
+//                                        }
+//                                        ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20
-                         ">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/patient/search') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-stethoscope"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('opd') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-                                        if (!empty($opd_income)) {
-                                            echo $currency_symbol . $opd_income;
-                                        } else {
-                                            echo "0";
-                                        }
-                                        ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-                <?php }
-            }
+                    <!--./col-lg-2-->
+                <?php
+//             }
+//            }
             ?>
             <?php
             if ($this->module_lib->hasActive('IPD')) {
                 if ($this->rbac->hasPrivilege('ipd_income_widget', 'can_view')) {
                     ?>
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20
+                    <div class="col-lg-4 col-md-4 col-sm-4 col10
                          ">
                         <div class="info-box">
                             <a href="<?php echo site_url('admin/patient/ipdsearch') ?>">
@@ -119,165 +122,165 @@
             }
             ?>
 <?php
-if ($this->module_lib->hasActive('pharmacy')) {
-    if ($this->rbac->hasPrivilege('pharmacy_income_widget', 'can_view')) {
-        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/pharmacy/bill') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-mortar-pestle"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('pharmacy') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-                                if (!empty($pharmacy_income)) {
-                                    echo $currency_symbol . $pharmacy_income;
-                                } else {
-                                    echo "0";
-                                }
-        ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-        <?php
-    }
-}
-if ($this->module_lib->hasActive('pathology')) {
-
-    if ($this->rbac->hasPrivilege('pathology_income_widget', 'can_view')) {
-        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/pathology/search') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-flask"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('pathology') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-                    if (!empty($pathology_income)) {
-                        echo $currency_symbol . $pathology_income;
-                    } else {
-                        echo "0";
-                    }
-                    ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-    <?php }
-}
-?>
+//if ($this->module_lib->hasActive('pharmacy')) {
+//    if ($this->rbac->hasPrivilege('pharmacy_income_widget', 'can_view')) {
+//        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/pharmacy/bill') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-mortar-pestle"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('pharmacy') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//                                if (!empty($pharmacy_income)) {
+//                                    echo $currency_symbol . $pharmacy_income;
+//                                } else {
+//                                    echo "0";
+//                                }
+//        ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--        --><?php
+//    }
+//}
+//if ($this->module_lib->hasActive('pathology')) {
+//
+//    if ($this->rbac->hasPrivilege('pathology_income_widget', 'can_view')) {
+//        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/pathology/search') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-flask"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('pathology') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//                    if (!empty($pathology_income)) {
+//                        echo $currency_symbol . $pathology_income;
+//                    } else {
+//                        echo "0";
+//                    }
+//                    ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--    --><?php //}
+//}
+//?>
 <?php
-if ($this->module_lib->hasActive('radiology')) {
-    if ($this->rbac->hasPrivilege('radiology_income_widget', 'can_view')) {
-        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/radio/search') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-microscope"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('radiology') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-                    if (!empty($radiology_income)) {
-                        echo $currency_symbol . $radiology_income;
-                    } else {
-                        echo "0";
-                    }
-                    ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-    <?php }
-}
-?>
-
-                                <?php
-                                if ($this->module_lib->hasActive('operation_theatre')) {
-                                    if ($this->rbac->hasPrivilege('ot_income_widget', 'can_view')) {
-                                        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/operationtheatre/otsearch') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-scissors"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('operation_theatre') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-            if (!empty($operation_theatre_income)) {
-                echo $currency_symbol . $operation_theatre_income;
-            } else {
-                echo "0";
-            }
-            ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-                                    <?php }
-                                }
-                                ?>
+//if ($this->module_lib->hasActive('radiology')) {
+//    if ($this->rbac->hasPrivilege('radiology_income_widget', 'can_view')) {
+//        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/radio/search') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-microscope"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('radiology') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//                    if (!empty($radiology_income)) {
+//                        echo $currency_symbol . $radiology_income;
+//                    } else {
+//                        echo "0";
+//                    }
+//                    ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--    --><?php //}
+//}
+//?>
+<!---->
+<!--                                --><?php
+//                                if ($this->module_lib->hasActive('operation_theatre')) {
+//                                    if ($this->rbac->hasPrivilege('ot_income_widget', 'can_view')) {
+//                                        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/operationtheatre/otsearch') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-scissors"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('operation_theatre') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//            if (!empty($operation_theatre_income)) {
+//                echo $currency_symbol . $operation_theatre_income;
+//            } else {
+//                echo "0";
+//            }
+//            ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                                    --><?php //}
+//                                }
+//                                ?>
 <?php
-if ($this->module_lib->hasActive('blood_bank')) {
-    if ($this->rbac->hasPrivilege('blood_bank_income_widget', 'can_view')) {
-        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/bloodbank/issue') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-tint"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('blood_bank') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-            if (!empty($blood_bank_income)) {
-                echo $currency_symbol . $blood_bank_income;
-            } else {
-                echo "0";
-            }
-            ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-                                    <?php }
-                                }
-                                ?>
+//if ($this->module_lib->hasActive('blood_bank')) {
+//    if ($this->rbac->hasPrivilege('blood_bank_income_widget', 'can_view')) {
+//        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/bloodbank/issue') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-tint"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('blood_bank') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//            if (!empty($blood_bank_income)) {
+//                echo $currency_symbol . $blood_bank_income;
+//            } else {
+//                echo "0";
+//            }
+//            ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                                    --><?php //}
+//                                }
+//                                ?>
 <?php
-if ($this->module_lib->hasActive('ambulance')) {
-    if ($this->rbac->hasPrivilege('ambulance_income_widget', 'can_view')) {
-        ?>
-
-
-                    <div class="col-lg-2 col-md-3 col-sm-6 col20
-                         ">
-                        <div class="info-box">
-                            <a href="<?php echo site_url('admin/vehicle/search') ?>">
-                                <span class="info-box-icon bg-green"><i class="fas fa-ambulance"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"><?php echo $this->lang->line('ambulance') . " " . $this->lang->line('income'); ?></span>
-                                    <span class="info-box-number"><?php
-                                        if (!empty($ambulance_income)) {
-                                            echo $currency_symbol . $ambulance_income;
-                                        } else {
-                                            echo "0";
-                                        }
-                                        ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--./col-lg-2-->
-    <?php }
-}
+//if ($this->module_lib->hasActive('ambulance')) {
+//    if ($this->rbac->hasPrivilege('ambulance_income_widget', 'can_view')) {
+//        ?>
+<!---->
+<!---->
+<!--                    <div class="col-lg-2 col-md-3 col-sm-6 col20-->
+<!--                         ">-->
+<!--                        <div class="info-box">-->
+<!--                            <a href="--><?php //echo site_url('admin/vehicle/search') ?><!--">-->
+<!--                                <span class="info-box-icon bg-green"><i class="fas fa-ambulance"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">--><?php //echo $this->lang->line('ambulance') . " " . $this->lang->line('income'); ?><!--</span>-->
+<!--                                    <span class="info-box-number">--><?php
+//                                        if (!empty($ambulance_income)) {
+//                                            echo $currency_symbol . $ambulance_income;
+//                                        } else {
+//                                            echo "0";
+//                                        }
+//                                        ?><!--</span>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--    --><?php //}
+//}
 ?>
 <?php if ($this->module_lib->hasActive('income')) { ?>
-                <div class="col-lg-2 col-md-3 col-sm-6 col20">
+                <div class="col-lg-4 col-md-4 col-sm-4 col10">
                     <div class="info-box">
                         <a href="#">
                             <span class="info-box-icon bg-green"><i class="fas fa-money-bill-wave"></i></span>
@@ -296,7 +299,7 @@ if ($this->module_lib->hasActive('ambulance')) {
                 </div><!--./col-lg-2-->
 <?php } ?>
 <?php if ($this->module_lib->hasActive('expense')) { ?>
-                <div class="col-lg-2 col-md-3 col-sm-6 col20
+                <div class="col-lg-4 col-md-4 col-sm-4 col10
                      ">
                     <div class="info-box">
                         <a href="<?php echo site_url('admin/expense') ?>">
