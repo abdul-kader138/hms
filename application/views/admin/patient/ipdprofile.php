@@ -65,24 +65,15 @@ $genderList = $this->customlib->getGender();
                                 <tr>
                                     <th class="bozerotop"><?php echo $this->lang->line('gender'); ?></th>
                                     <td class="bozerotop"><?php echo $result['gender']; ?></td>
-                                    <th class="bozerotop"><?php echo $this->lang->line('age'); ?></th>
-                                    <td class="bozerotop">
-                                        <?php
-                                        if (!empty($result['age'])) {
-                                            echo $result['age'] . " " . $this->lang->line('year') . " ";
-                                        }
-                                        if (!empty($result['month'])) {
-                                            echo $result['month'] . " " . $this->lang->line('month');
-                                        }
-                                        ?>
-                                    </td>
+                                    <th class="bozerotop"><?php echo $this->lang->line('birth')." ".$this->lang->line('date'); ?></th>
+                                    <td class="bozerotop"><?php echo $result['dob']; ?></td>
                                 </tr>
                                 <tr>
                                     <th class="bozerotop"><?php echo $this->lang->line('phone'); ?></th>
                                     <td class="bozerotop"><?php echo $result['mobileno']; ?></td>
-                                    <th class="bozerotop"><?php echo $this->lang->line('credit_limit') . " (" . $currency_symbol . ")";;
+                                    <th class="bozerotop"><?php echo $this->lang->line('emergency') . " ".$this->lang->line('contact')." ".$this->lang->line('name');
                                         ?></th>
-                                    <td class="bozerotop"><?php echo $result['credit_limit']; ?>
+                                    <td class="bozerotop"><?php echo $result['guardian_name']; ?>
                                     </td>
 
                                 </tr>
@@ -104,9 +95,9 @@ $genderList = $this->customlib->getGender();
                                         ?></th>
                                     <td class="bozerotop"><?php echo date($this->customlib->getSchoolDateFormat(true, true), strtotime($result['date'])) ?>
                                     </td>
-                                    <th class="bozerotop"><?php echo $this->lang->line('bed');;
+                                    <th class="bozerotop"><?php echo $this->lang->line('medical_insurance');;
                                         ?></th>
-                                    <td class="bozerotop"><?php echo $result['bed_name'] . " - " . $result['bedgroup_name'] . " - " . $result['floor_name'] ?>
+                                    <td class="bozerotop"><?php echo $result['medical_insurance']; ?>
                                     </td>
 
                                 </tr>
@@ -221,7 +212,7 @@ $genderList = $this->customlib->getGender();
                                         <div class="impbtnview">
                                             <a href="#" class="btn btn-sm btn-primary dropdown-toggle"
                                                onclick="holdModal('add_instruction')" data-toggle="modal"><i
-                                                        class="fas fa-plus"></i> <?php echo $this->lang->line('add') . " " . $this->lang->line('consultant') . " " . $this->lang->line('instruction'); ?>
+                                                        class="fas fa-plus"></i> <?php echo $this->lang->line('add') . " " . $this->lang->line('doctor') . " " . $this->lang->line('instruction'); ?>
                                             </a>
                                         </div>
                                     <?php }
@@ -1186,8 +1177,8 @@ $genderList = $this->customlib->getGender();
                                         <td width="35%"><span id='patients_id'></span></td>
                                     </tr>
                                     <tr>
-                                        <th width="15%"><?php echo $this->lang->line('guardian_name'); ?></th>
-                                        <td width="35%"><span id='guardian_name'></span></td>
+                                        <th width="15%"><?php echo $this->lang->line('occupation'); ?></th>
+                                        <td width="35%"><span id='occupation'></span></td>
                                         <th width="15%"><?php echo $this->lang->line('gender'); ?></th>
                                         <td width="35%"><span id='gen'></span></td>
 
@@ -1210,29 +1201,15 @@ $genderList = $this->customlib->getGender();
                                         <td width="35%"><span id='patient_address'></span></td>
                                     </tr>
                                     <tr>
-                                        <th width="15%"><?php echo $this->lang->line('age'); ?></th>
-                                        <td width="35%"><span id="age"></span>
+                                        <th width="15%"><?php echo $this->lang->line('birtd_date'); ?></th>
+                                        <td width="35%"><span id="dob"></span>
                                         </td>
                                         <th width="15%"><?php echo $this->lang->line('blood_group'); ?></th>
                                         <td width="35%"><span id="blood_group"></span>
                                         </td>
 
                                     </tr>
-                                    <tr>
-                                        <th width="15%"><?php echo $this->lang->line('height'); ?></th>
-                                        <td width="35%"><span id='height'></span></td>
-                                        <th width="15%"><?php echo $this->lang->line('weight'); ?></th>
-                                        <td width="35%"><span id="weight"></span>
-                                        </td>
 
-                                    </tr>
-
-                                    <tr>
-                                        <th width="15%"><?php echo $this->lang->line('bp'); ?></th>
-                                        <td width="35%"><span id='patient_bp'></span></td>
-                                        <th width="15%"><?php echo $this->lang->line('symptoms'); ?></th>
-                                        <td width="35%"><span id='symptoms'></span></td>
-                                    </tr>
                                     <tr>
                                         <th width="15%"><?php echo $this->lang->line('known_allergies'); ?></th>
                                         <td width="35%"><span id="known_allergies"></span>
@@ -1244,30 +1221,12 @@ $genderList = $this->customlib->getGender();
                                     <tr>
                                         <th width="15%"><?php echo $this->lang->line('case'); ?></th>
                                         <td width="35%"><span id='case'></span></td>
-                                        <th width="15%"><?php echo $this->lang->line('casualty'); ?></th>
-                                        <td width="35%"><span id="casualty"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th width="15%"><?php echo $this->lang->line('old') . " " . $this->lang->line('patient'); ?></th>
                                         <td width="35%"><span id='old_patient'></span></td>
-                                        <th width="15%"><?php echo $this->lang->line('organisation'); ?></th>
-                                        <td width="35%"><span id="organisation"></span>
-                                        </td>
                                     </tr>
                                     <tr>
-                                        <th width="15%"><?php echo $this->lang->line('refference'); ?></th>
-                                        <td width="35%"><span id="refference"></span>
-                                        </td>
-                                        <th width="15%"><?php echo $this->lang->line('consultant') . " " . $this->lang->line('doctor'); ?></th>
+                                        <th width="15%"><?php echo $this->lang->line('doctor') . " " . $this->lang->line('doctor'); ?></th>
                                         <td width="35%"><span id='doc'></span></td>
-                                    </tr>
-                                    <tr>
-                                        <th width="15%"><?php echo $this->lang->line('bed') . " " . $this->lang->line('group'); ?></th>
-                                        <td width="35%"><span id="bed_group"></span>
-                                        </td>
-                                        <th width="15%"><?php echo $this->lang->line('bed') . " " . $this->lang->line('number'); ?></th>
-                                        <td width="35%"><span id='bed_name'></span></td>
                                     </tr>
 
                                 </table>
@@ -1471,6 +1430,7 @@ $genderList = $this->customlib->getGender();
         </div>
     </div>
 </div>
+
 <!-- -->
 <div class="modal fade" id="myModaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -1511,12 +1471,12 @@ $genderList = $this->customlib->getGender();
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label><?php echo $this->lang->line('guardian_name') ?></label>
-                                                <input type="text" id="guardian_names" name="guardian_name" value=""
+                                                <label><?php echo $this->lang->line('occupation') ?></label>
+                                                <input type="text" id="occupation" name="occupation" value=""
                                                        class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label> <?php echo $this->lang->line('gender'); ?></label>
                                                 <select class="form-control" id="genders" name="gender">
@@ -1532,19 +1492,7 @@ $genderList = $this->customlib->getGender();
                                                 <span class="text-danger"><?php echo form_error('gender'); ?></span>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label for="pwd"><?php echo $this->lang->line('marital_status'); ?></label>
-                                                <select name="marital_status" id="marital_statuss" class="form-control">
-                                                    <option value=""><?php echo $this->lang->line('select') ?></option>
-                                                    <?php foreach ($marital_status as $mkey => $mvalue) {
-                                                        ?>
-                                                        <option value="<?php echo $mkey ?>"><?php echo $mvalue ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="pwd"><?php echo $this->lang->line('phone'); ?></label>
                                                 <input id="contacts" autocomplete="off" name="contact" placeholder=""
@@ -1562,6 +1510,34 @@ $genderList = $this->customlib->getGender();
                                                 <span class="text-danger"><?php echo form_error('file'); ?></span>
                                             </div>
                                         </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label><?php echo $this->lang->line('emergency') . " " . $this->lang->line('contact'). " " . $this->lang->line('name'); ?></label>
+                                                <input type="text" value="<?php echo set_value('ecname'); ?>" name="ecname" id="ecname" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label><?php echo $this->lang->line('emergency') . " " . $this->lang->line('contact'). " " . $this->lang->line('info'); ?></label>
+                                                <input type="text" value="<?php echo set_value('ecinfo'); ?>" id="ecinfo" name="ecinfo" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label><?php echo  $this->lang->line('relation'); ?></label>
+                                                <input type="text" value="<?php echo set_value('relation'); ?>" name="relation" id="relation" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <label for="address"><?php echo $this->lang->line('address'); ?></label>
+                                                <input type="text" id="address"
+                                                       value="<?php echo set_value('address'); ?>" name="address"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label><?php echo $this->lang->line('email'); ?></label>
@@ -1569,33 +1545,14 @@ $genderList = $this->customlib->getGender();
                                                        name="email" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label for="email"><?php echo $this->lang->line('address'); ?></label>
-                                                <input type="text" id="edit_patient_address"
-                                                       value="<?php echo set_value('address'); ?>" name="address"
-                                                       class="form-control">
+                                                <label><?php echo $this->lang->line('birth') . " " . $this->lang->line('date'); ?></label><small class="req"> *</small>
+                                                <input id="birth_date" name="birth_date" placeholder="" type="text" class="form-control date"   />
+                                                <span class="text-danger"><?php echo form_error('birth_date'); ?></span>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label><?php echo $this->lang->line('age') ?></label>
-                                                <div style="clear: both;overflow: hidden;">
-                                                    <input type="text"
-                                                           placeholder="<?php echo $this->lang->line('year'); ?>"
-                                                           name="age" id="ages" class="form-control"
-                                                           value="<?php echo set_value('age'); ?>"
-                                                           style="width: 40%; float: left;">
-                                                    <input type="text"
-                                                           placeholder="<?php echo $this->lang->line('month'); ?>"
-                                                           name="month" id="months"
-                                                           value="<?php echo set_value('month'); ?>"
-                                                           class="form-control"
-                                                           style="width: 56%;float: left; margin-left: 5px;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label> <?php echo $this->lang->line('blood_group'); ?></label>
                                                 <select class="form-control" id="bloodgroups" name="blood_group">
@@ -1611,35 +1568,7 @@ $genderList = $this->customlib->getGender();
                                                 <span class="text-danger"><?php echo form_error('blood_group'); ?></span>
                                             </div>
                                         </div>
-                                        <div class="col-sm-2 col-xs-4">
-                                            <div class="form-group">
-                                                <label for="pwd"><?php echo $this->lang->line('height'); ?></label>
-                                                <input name="height" id="patient_height" type="text"
-                                                       class="form-control" value="<?php echo set_value('height'); ?>"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 col-xs-4">
-                                            <div class="form-group">
-                                                <label for="pwd"><?php echo $this->lang->line('weight'); ?></label>
-                                                <input name="weight" id="patient_weight" type="text"
-                                                       class="form-control" value="<?php echo set_value('weight'); ?>"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 col-xs-4">
-                                            <div class="form-group">
-                                                <label for="pwd"><?php echo $this->lang->line('bp') ?></label>
-                                                <input name="bp" type="text" id="bp" class="form-control"
-                                                       value="<?php echo set_value('bp'); ?>"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="email"><?php echo $this->lang->line('symptoms') ?></label>
-                                                <textarea name="symptoms" id="patient_symptoms"
-                                                          class="form-control"><?php echo set_value('address'); ?></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-xs-4">
                                             <div class="form-group">
                                                 <label for="email"><?php echo $this->lang->line('any_known_allergies') ?></label>
                                                 <textarea name="known_allergies" id="patient_allergies"
@@ -1678,21 +1607,7 @@ $genderList = $this->customlib->getGender();
                                                 <span class="text-danger"><?php echo form_error('case'); ?></span></div>
                                         </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('casualty'); ?></label>
-                                                <div>
-                                                    <select name="casualty" id="patient_casualty" class="form-control">
-
-                                                        <option value="<?php echo $this->lang->line('yes') ?>"><?php echo $this->lang->line('yes') ?></option>
-                                                        <option value="<?php echo $this->lang->line('no') ?>"
-                                                                selected><?php echo $this->lang->line('no') ?></option>
-                                                    </select>
-                                                </div>
-                                                <span class="text-danger"><?php echo form_error('case'); ?></span></div>
-                                        </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="exampleInputFile">
                                                     <?php echo $this->lang->line('old') . " " . $this->lang->line('patient'); ?></label>
@@ -1703,46 +1618,12 @@ $genderList = $this->customlib->getGender();
                                                                 selected><?php echo $this->lang->line('no') ?></option>
                                                     </select>
                                                 </div>
-                                                <span class="text-danger"><?php echo form_error('case'); ?></span></div>
+                                                <span class="text-danger"><?php echo form_error('old_patient'); ?></span></div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label><?php echo $this->lang->line('credit_limit') . " (" . $currency_symbol . ")"; ?></label>
-                                                <input type="text" id="credits_limits"
-                                                       value="<?php echo set_value('credit_limit'); ?>"
-                                                       name="credit_limit" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('organisation'); ?></label>
-                                                <div><select class="form-control" name='organisation'
-                                                             id="organisations">
-                                                        <option value=""><?php echo $this->lang->line('select') ?></option>
-                                                        <?php foreach ($organisation as $orgkey => $orgvalue) {
-                                                            ?>
-                                                            <option value="<?php echo $orgvalue["id"]; ?>"><?php echo $orgvalue["organisation_name"] ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                                <span class="text-danger"><?php echo form_error('organisation'); ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('refference'); ?></label>
-                                                <div><input class="form-control" type='text' name='refference'
-                                                            id="patient_refference"/>
-                                                </div>
-                                                <span class="text-danger"><?php echo form_error('refference'); ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('consultant') . " " . $this->lang->line('doctor'); ?>
+                                                    <?php echo $this->lang->line('doctor') . " " . $this->lang->line('doctor'); ?>
                                                     <small class="req"> *</small>
                                                 </label>
                                                 <div>
@@ -1760,37 +1641,6 @@ $genderList = $this->customlib->getGender();
                                                     </select>
                                                 </div>
                                                 <span class="text-danger"><?php echo form_error('cons_doctor'); ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('bed') . " " . $this->lang->line('group'); ?></label>
-                                                <div>
-                                                    <select class="form-control" name='bed_group_id' id='bed_group_id'
-                                                            onchange="getBed(this.value, '', 'yes')">
-                                                        <option value=""><?php echo $this->lang->line('select') ?></option>
-                                                        <?php foreach ($bedgroup_list as $key => $bedgroup) {
-                                                            ?>
-                                                            <option value="<?php echo $bedgroup["id"] ?>"><?php echo $bedgroup["name"] . " - " . $bedgroup["floor_name"] ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">
-                                                    <?php echo $this->lang->line('bed') . " " . $this->lang->line('no'); ?></label>
-                                                <small class="req"> *</small>
-                                                <div><select class="form-control select2" style="width:100%"
-                                                             name='bed_no' id='bed_nos'>
-                                                        <option value=""><?php echo $this->lang->line('select') ?></option>
-
-                                                    </select>
-                                                </div>
-                                                <span class="text-danger"><?php echo form_error('bed_no'); ?></span>
                                             </div>
                                         </div>
                                     </div><!--./row-->
@@ -1824,7 +1674,7 @@ $genderList = $this->customlib->getGender();
         <div class="modal-content modal-media-content">
             <div class="modal-header modal-media-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="box-title"><?php echo $this->lang->line('consultant') . " " . $this->lang->line('instruction'); ?></h4>
+                <h4 class="box-title"><?php echo $this->lang->line('doctor') . " " . $this->lang->line('instruction'); ?></h4>
             </div>
 
             <div class="modal-body pt0 pb0">
@@ -1845,7 +1695,7 @@ $genderList = $this->customlib->getGender();
 
                                                 <small class="req"> *</small>
                                             </th>
-                                            <th><?php echo $this->lang->line('consultant'); ?>
+                                            <th><?php echo $this->lang->line('doctor'); ?>
                                                 <small class="req"> *</small>
                                             </th>
                                             <th><?php echo $this->lang->line('instruction'); ?>
@@ -2049,36 +1899,33 @@ $genderList = $this->customlib->getGender();
             success: function (data) {
                 console.log(data);
                 $("#patients_ids").val(data.patient_unique_id);
+                $("#occupation").val(data.occupation);
+                $("#genders").val(data.gender);
+                $("#address").val(data.address);
+                $("#birth_date").val(data.dob);
                 $("#patient_names").val(data.patient_name);
                 $("#edit_admission_date").val(data.date);
                 $("#contacts").val(data.mobileno);
                 $("#patient_image").val(data.image);
                 $("#emails").val(data.email);
-                $("#ages").val(data.age);
-                $("#months").val(data.month);
-                $("#patient_height").val(data.height);
-                $("#patient_weight").val(data.weight);
-                $("#bp").val(data.bp);
-                $("#edit_patient_address").val(data.address);
+                $("#ecname").val(data.guardian_name);
+                $("#ecinfo").val(data.guardian_address);
+                $("#relation").val(data.guardian_relation);
                 $("#patient_case").val(data.case_type);
-                $("#patient_symptoms").val(data.symptoms);
                 $("#patient_allergies").val(data.known_allergies);
                 $("#patient_note").val(data.note);
-                $("#patient_refference").val(data.refference);
                 $("#bloodgroups").val(data.blood_group);
-                $("#guardian_names").val(data.guardian_name);
-                $("#credits_limits").val(data.credit_limit);
                 $("#ipdid").val(data.ipdid);
-                $("#previous_bed_id").val(data.bed);
-                $("#bed_group_id").val(data.bed_group_id);
-                getBed(data.bed_group_id, data.bed, '');
+                $("#patient_consultant").val(data.cons_doctor);
+                // patient_consultant
+                // getBed(data.bed_group_id, data.bed, '');
                 $("#updateid").val(id);
                 $('select[id="patient_consultant"] option[value="' + data.cons_doctor + '"]').attr("selected", "selected");
-                $('select[id="patient_casualty"] option[value="' + data.casualty + '"]').attr("selected", "selected");
+                // $('select[id="patient_casualty"] option[value="' + data.casualty + '"]').attr("selected", "selected");
                 $('select[id="old"] option[value="' + data.old_patient + '"]').attr("selected", "selected");
                 $('select[id="genders"] option[value="' + data.gender + '"]').attr("selected", "selected");
-                $('select[id="marital_statuss"] option[value="' + data.marital_status + '"]').attr("selected", "selected");
-                $('select[id="organisations"] option[value="' + data.organisation + '"]').attr("selected", "selected");
+                // $('select[id="marital_statuss"] option[value="' + data.marital_status + '"]').attr("selected", "selected");
+                // $('select[id="organisations"] option[value="' + data.organisation + '"]').attr("selected", "selected");
                 $(".select2").select2().select2('val', data.cons_doctor);
 
 

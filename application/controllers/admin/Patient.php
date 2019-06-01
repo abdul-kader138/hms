@@ -706,19 +706,21 @@ class patient extends Admin_Controller
                 'id' => $this->input->post('updateid'),
                 'patient_name' => $this->input->post('name'),
                 'mobileno' => $this->input->post('contact'),
-                'marital_status' => $this->input->post('marital_status'),
+                'admission_date' => $this->input->post('appointment_date'),
                 'email' => $this->input->post('email'),
                 'gender' => $this->input->post('gender'),
-                'guardian_name' => $this->input->post('guardian_name'),
                 'blood_group' => $this->input->post('blood_group'),
                 'address' => $this->input->post('address'),
                 'note' => $this->input->post('note'),
-                'age' => $this->input->post('age'),
-                'month' => $this->input->post('month'),
-                'is_active' => 'yes',
-                'old_patient' => $this->input->post('old_patient'),
-                'organisation' => $this->input->post('organisation'),
-                'credit_limit' => $this->input->post('credit_limit'),
+                'dob' => $this->input->post('birth_date'),
+                'patient_type' => $patient_type['inpatient'],
+                'guardian_name' => $this->input->post('ecname'),
+                'guardian_address' => $this->input->post('ecinfo'),
+                'medical_insurance' => $this->input->post('medical_insurance'),
+                'insurance_company_name' => $this->input->post('insurance_company_name'),
+                'guardian_relation' => $this->input->post('relation'),
+                'occupation' => $this->input->post('occupation'),
+                'old_patient' => $this->input->post('old_patient')
             );
             $this->patient_model->add($patient_data);
             $previous_bed_id = $this->input->post('previous_bed_id');
@@ -730,17 +732,9 @@ class patient extends Admin_Controller
             $ipd_data = array(
                 'id' => $this->input->post('ipdid'),
                 'date' => date('Y-m-d H:i:s', $this->customlib->datetostrtotime($appointment_date)),
-                'bed' => $this->input->post('bed_no'),
-                'bed_group_id' => $this->input->post('bed_group_id'),
-                'height' => $this->input->post('height'),
-                'bp' => $this->input->post('bp'),
-                'weight' => $this->input->post('weight'),
                 'case_type' => $this->input->post('case_type'),
-                'symptoms' => $this->input->post('symptoms'),
                 'known_allergies' => $this->input->post('known_allergies'),
-                'refference' => $this->input->post('refference'),
-                'cons_doctor' => $this->input->post('cons_doctor'),
-                'casualty' => $this->input->post('casualty'),
+                'cons_doctor' => $this->input->post('cons_doctor')
             );
             $bed_data = array('id' => $this->input->post('bed_no'), 'is_active' => 'no');
             $this->bed_model->savebed($bed_data);
@@ -1028,14 +1022,12 @@ class patient extends Admin_Controller
         $patient_type = $this->customlib->getPatienttype();
         $this->form_validation->set_rules('name', $this->lang->line('name'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('appointment_date', $this->lang->line('appointment') . " " . $this->lang->line('date'), 'trim|required|xss_clean');
-        $this->form_validation->set_rules('bed_no', $this->lang->line('bed'), 'trim|required|xss_clean');
-        $this->form_validation->set_rules('consultant_doctor', $this->lang->line('consultant') . " " . $this->lang->line('doctor'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('consultant_doctor', $this->lang->line('doctor'), 'trim|required|xss_clean');
         if ($this->form_validation->run() == FALSE) {
             $msg = array(
                 'firstname' => form_error('name'),
                 'gender' => form_error('gender'),
                 'appointment_date' => form_error('appointment_date'),
-                'bed_no' => form_error('bed_no'),
                 'consultant_doctor' => form_error('consultant_doctor'),
             );
             $array = array('status' => 'fail', 'error' => $msg, 'message' => '');
@@ -1049,38 +1041,32 @@ class patient extends Admin_Controller
             $patient_data = array(
                 'patient_name' => $this->input->post('name'),
                 'mobileno' => $this->input->post('contact'),
-                'marital_status' => $this->input->post('marital_status'),
+                'admission_date' => $this->input->post('appointment_date'),
                 'email' => $this->input->post('email'),
                 'gender' => $this->input->post('gender'),
-                'guardian_name' => $this->input->post('guardian_name'),
                 'blood_group' => $this->input->post('blood_group'),
                 'address' => $this->input->post('address'),
                 'patient_unique_id' => $patient_id,
                 'note' => $this->input->post('note'),
-                'age' => $this->input->post('age'),
-                'month' => $this->input->post('month'),
-                'is_active' => 'yes',
+                'dob' => $this->input->post('birth_date'),
                 'patient_type' => $patient_type['inpatient'],
+                'guardian_name' => $this->input->post('ecname'),
+                'guardian_address' => $this->input->post('ecinfo'),
+                'medical_insurance' => $this->input->post('medical_insurance'),
+                'insurance_company_name' => $this->input->post('insurance_company_name'),
+                'guardian_relation' => $this->input->post('relation'),
+                'occupation' => $this->input->post('occupation'),
                 'old_patient' => $this->input->post('old_patient'),
-                'organisation' => $this->input->post('organisation'),
-                'credit_limit' => $this->input->post('credit_limit'),
+                'is_active' => 'yes'
             );
             $insert_id = $this->patient_model->add($patient_data);
             $ipd_data = array(
                 'date' => date('Y-m-d H:i:s', $this->customlib->datetostrtotime($appointment_date)),
                 'ipd_no' => "IPDN" . $patient_id,
-                'bed' => $this->input->post('bed_no'),
-                'bed_group_id' => $this->input->post('bed_group_id'),
-                'height' => $this->input->post('height'),
-                'weight' => $this->input->post('weight'),
-                'bp' => $this->input->post('bp'),
                 'case_type' => $this->input->post('case'),
-                'symptoms' => $this->input->post('symptoms'),
                 'known_allergies' => $this->input->post('known_allergies'),
-                'refference' => $this->input->post('refference'),
                 'cons_doctor' => $this->input->post('consultant_doctor'),
-                'patient_id' => $insert_id,
-                'casualty' => $this->input->post('casualty'),
+                'patient_id' => $insert_id
             );
             $bed_data = array('id' => $this->input->post('bed_no'), 'is_active' => 'no');
             $this->bed_model->savebed($bed_data);

@@ -909,6 +909,16 @@ $lang['you_can_edit_record'] = 'You Can Edit Record';
 $lang['your'] = 'Your';
 $lang['youtube_url'] = 'Youtube URL';
 
+$lang['occupation'] = 'Occupation';
+$lang['birth'] = 'Birth';
+$lang['emergency'] = 'Emergency';
+$lang['contact'] = 'Contact';
+$lang['info'] = 'Info';
+$lang['relation'] = 'Relation';
+$lang['medical_insurance'] = 'Medical Insurance';
+$lang['insurance_company_Name'] = 'Insurance Company Name';
+$lang['patient_type'] = 'Patient Type';
+
 
 //version 1.1
 $lang['loading'] = 'Loading...';
