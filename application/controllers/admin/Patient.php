@@ -520,6 +520,7 @@ class patient extends Admin_Controller
 
 //            a.kader
             $patient_document = $this->patient_model->getDocumentDetails($id);
+            $patient_reminder = $this->patient_model->getReminderDetails($id);
 //            a.kader
 
             $diagnosis_details = $this->patient_model->getDiagnosisDetails($id);
@@ -536,6 +537,7 @@ class patient extends Admin_Controller
             $data["consultant_register"] = $consultant_register;
             $data["result"] = $result;
             $data["pDocuments"] = $patient_document;
+            $data["pReminders"] = $patient_reminder;
             $data["diagnosis_detail"] = $diagnosis_details;
             // $data["prescription_detail"] = $prescription_details;
             $data["opd_details"] = $opd_details;
@@ -702,6 +704,8 @@ class patient extends Admin_Controller
             $id = $this->input->post('updateid');
             $appointment_date = $this->input->post('appointment_date');
 
+            $ins_company = "";
+            if ($this->input->post('medical_insurance_company') == 'Yes') $ins_company = $this->input->post('insurance_company_names');
             $patient_data = array(
                 'id' => $this->input->post('updateid'),
                 'patient_name' => $this->input->post('name'),
@@ -716,10 +720,10 @@ class patient extends Admin_Controller
                 'patient_type' => $patient_type['inpatient'],
                 'guardian_name' => $this->input->post('ecname'),
                 'guardian_address' => $this->input->post('ecinfo'),
-                'medical_insurance' => $this->input->post('medical_insurance'),
-                'insurance_company_name' => $this->input->post('insurance_company_name'),
-                'guardian_relation' => $this->input->post('relation'),
-                'occupation' => $this->input->post('occupation'),
+                'medical_insurance' => $this->input->post('medical_insurance_company'),
+                'insurance_company_name' => $ins_company,
+                'guardian_relation' => $this->input->post('relations'),
+                'occupation' => $this->input->post('occupations'),
                 'old_patient' => $this->input->post('old_patient')
             );
             $this->patient_model->add($patient_data);
@@ -882,7 +886,34 @@ class patient extends Admin_Controller
     }
 
 
-    public function deleteIpdPatientDocuments($pateint_id,$id)
+    //  a.kader
+    public function add_pReminder()
+    {
+        $this->form_validation->set_rules('reminder_name', $this->lang->line('reminder') . " " . $this->lang->line('name'), 'trim|required|xss_clean');
+        if ($this->form_validation->run() == FALSE) {
+            $msg = array(
+                'reminder_name' => form_error('reminder_name'),
+                'note' => form_error('note'),
+            );
+            $array = array('status' => 'fail', 'error' => $msg, 'message' => '');
+        } else {
+            $reminder_date = $this->input->post('reminder_date');
+            $data = array(
+                'reminder_name' => $this->input->post("reminder_name"),
+                'patient_id' => $this->input->post("patient"),
+                'reminder_date' => date('Y-m-d', $this->customlib->datetostrtotime($reminder_date)),
+                'note' => $this->input->post("note"),
+            );
+            $insert_id = $this->patient_model->add_pReminder($data);
+            if ($insert_id) $array = array('status' => 'success', 'error' => '', 'message' => 'Record Added Successfully.');
+            else  $array = array('status' => 'fail', 'error' => 'Data insertion failed.Please contact with admin.', 'message' => '');
+
+        }
+        echo json_encode($array);
+    }
+
+
+    public function deleteIpdPatientDocuments($pateint_id, $id)
     {
         if (!$this->rbac->hasPrivilege('ipd document', 'can_delete')) {
             access_denied();
@@ -894,6 +925,16 @@ class patient extends Admin_Controller
         redirect('admin/patient/ipdprofile/' . $pateint_id . '#pDocument');
     }
 
+
+    public function deleteIpdPatientReminder($pateint_id, $id)
+    {
+        if (!$this->rbac->hasPrivilege('ipd reminder', 'can_delete')) {
+            access_denied();
+        }
+        $this->patient_model->deleteIpdPatientReminder($id);
+        $this->session->set_flashdata('msg', '<div class="alert alert-success">Patient reminder deleted successfully</div>');
+        redirect('admin/patient/ipdprofile/' . $pateint_id . '#pDocument');
+    }
 
 //  a.kader
 
@@ -1232,7 +1273,7 @@ class patient extends Admin_Controller
         $doctorlist = $this->staff_model->getEmployeeByRoleID(3);
         $data['doctorlist'] = $doctorlist;
 
-        $select = 'ipd_details.*,payment.paid_amount, payment.date as payment_date, staff.name,staff.surname,patients.id as pid,patients.patient_name,patients.patient_unique_id,patients.guardian_name,patients.address,patients.admission_date,patients.gender,patients.mobileno,patients.age';
+        $select = 'ipd_details.*,payment.paid_amount, payment.date as payment_date, staff.name,staff.surname,patients.id as pid,patients.patient_name,patients.patient_unique_id,patients.guardian_name,patients.address,patients.admission_date,patients.gender,patients.mobileno';
         $join = array(
             'JOIN staff ON ipd_details.cons_doctor = staff.id',
             'JOIN patients ON ipd_details.patient_id = patients.id',
@@ -1282,7 +1323,7 @@ class patient extends Admin_Controller
             $search_column = "date";
             $resultlist = $this->report_model->searchReport($select, $join, $table_name, $search_type, $search_table, $search_column, $additional_where);
         }
-        $resultList2 = $this->report_model->searchReport($select = 'ipd_details.*,ipd_billing.net_amount as paid_amount, ipd_billing.date as payment_date,staff.name,staff.surname,patients.id as pid,patients.patient_name,patients.patient_unique_id,patients.guardian_name,patients.address,patients.admission_date,patients.gender,patients.mobileno,patients.age', $join = array(
+        $resultList2 = $this->report_model->searchReport($select = 'ipd_details.*,ipd_billing.net_amount as paid_amount, ipd_billing.date as payment_date,staff.name,staff.surname,patients.id as pid,patients.patient_name,patients.patient_unique_id,patients.guardian_name,patients.address,patients.admission_date,patients.gender,patients.mobileno', $join = array(
             'JOIN staff ON ipd_details.cons_doctor = staff.id',
             'JOIN patients ON ipd_details.patient_id = patients.id',
             'JOIN payment ON payment.patient_id = patients.id',

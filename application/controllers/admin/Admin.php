@@ -382,7 +382,9 @@ class Admin extends Admin_Controller {
         $role_id = json_decode($role)->id;
         $staffid = $this->customlib->getStaffID();
         $notifications = $this->notification_model->getUnreadStaffNotification($staffid, $role_id);
+        $patient_notifications = $this->notification_model->getPatientNotifications();
         $data['notifications'] = $notifications;
+        $data['patient_notifications'] = $patient_notifications;
         $Current_year = date('Y');
         $Next_year = date("Y");
         $current_date = date('Y-m-d');

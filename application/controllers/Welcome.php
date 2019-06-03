@@ -2,9 +2,11 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends Front_Controller {
+class Welcome extends Front_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->config('form-builder');
         $this->load->library(array('mailer', 'form_builder'));
@@ -17,11 +19,13 @@ class Welcome extends Front_Controller {
         $this->data['banner_notices'] = $this->cms_program_model->getByCategory($ban_notice_type, array('start' => 0, 'limit' => 5));
     }
 
-    public function show_404() {
+    public function show_404()
+    {
         $this->load->view('errors/error_message');
     }
 
-    public function index() {
+    public function index()
+    {
         $setting = $this->frontcms_setting_model->get();
         $this->data['active_menu'] = 'home';
         $this->data['page_side_bar'] = $setting->is_active_sidebar;
@@ -31,11 +35,11 @@ class Welcome extends Front_Controller {
         if (!empty($result)) {
             $this->data['banner_images'] = $this->cms_program_model->front_cms_program_photos($result[0]['id']);
         }
-
         $this->load_theme('home');
     }
 
-    public function appointment() {
+    public function appointment()
+    {
         $setting = $this->frontcms_setting_model->get();
         $this->data['active_menu'] = 'Appointment';
         $this->data['page_side_bar'] = $setting->is_active_sidebar;
@@ -77,7 +81,8 @@ class Welcome extends Front_Controller {
         }
     }
 
-    public function page($slug) {
+    public function page($slug)
+    {
         $page = $this->cms_page_model->getBySlug($slug);
         if (!$page) {
             $this->data['page'] = $this->cms_page_model->getBySlug('404-page');
@@ -130,7 +135,7 @@ class Welcome extends Front_Controller {
                     }
                 }
                 if ($this->form_validation->run() == false) {
-                    
+
                 } else {
                     $setting = $this->frontcms_setting_model->get();
 
@@ -184,7 +189,8 @@ class Welcome extends Front_Controller {
         $this->load_theme('pages/page');
     }
 
-    public function ajaxPaginationData() {
+    public function ajaxPaginationData()
+    {
         $page = $this->input->post('page');
         $page_content_type = $this->input->post('page_content_type');
         if (!$page) {
@@ -208,7 +214,8 @@ class Welcome extends Front_Controller {
         $this->load->view('themes/default/pages/ajax-pagination-data', $data, false);
     }
 
-    public function read($slug) {
+    public function read($slug)
+    {
         $this->data['active_menu'] = 'home';
         $page = $this->cms_program_model->getBySlug($slug);
         $this->data['page_side_bar'] = $page['sidebar'];
@@ -218,4 +225,5 @@ class Welcome extends Front_Controller {
     }
 
 }
+
 ?>

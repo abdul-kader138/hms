@@ -912,11 +912,12 @@ $lang['youtube_url'] = 'Youtube URL';
 $lang['occupation'] = 'Occupation';
 $lang['birth'] = 'Birth';
 $lang['emergency'] = 'Emergency';
+$lang['reminder'] = 'Reminder';
 $lang['contact'] = 'Contact';
 $lang['info'] = 'Info';
 $lang['relation'] = 'Relation';
 $lang['medical_insurance'] = 'Medical Insurance';
-$lang['insurance_company_Name'] = 'Insurance Company Name';
+$lang['insurance_company_name'] = 'Insurance Company Name';
 $lang['patient_type'] = 'Patient Type';
 
 

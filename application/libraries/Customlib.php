@@ -797,6 +797,12 @@ class Customlib {
         return $result;
     }
 
+    public function getPatientNotifications() {
+        $patient_notifications = $this->CI->notification_model->getPatientNotifications();
+        return $patient_notifications;
+    }
+
+
 //========================
 //========================
 }

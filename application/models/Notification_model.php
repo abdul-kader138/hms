@@ -212,5 +212,19 @@ LEFT JOIN read_notification ON send_notification.id = read_notification.notifica
         }
     }
 
+    public function getPatientNotifications() {
+        $date = date('Y-m-d');
+        $this->db->select('patient_reminder.*,patient_name');
+        $this->db->join('patients', 'patients.id = patient_reminder.patient_id');
+        $this->db->where("reminder_date >=", $date);
+        $q = $this->db->get("patient_reminder");
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
+
 }
 ?>

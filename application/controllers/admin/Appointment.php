@@ -66,6 +66,8 @@ class Appointment extends Admin_Controller {
         $data["doctors"] = $doctors;
         $data["appointment_status"] = $this->appointment_status;
         $data['resultlist'] = $this->appointment_model->searchFullText();
+//        $patient_notifications = $this->notification_model->getPatientNotifications();
+//        $data['patient_notifications'] = $patient_notifications;
         $userdata = $this->customlib->getUserData();
         $role_id = $userdata['role_id'];
         $doctorid = "";
