@@ -250,7 +250,7 @@ $lang['design'] = 'Design';
 $lang['designation'] = 'Designation';
 $lang['detailed_view'] = 'Detailed View';
 $lang['details'] = 'Details';
-$lang['diagnosis'] = 'Diagnosis';
+$lang['diagnosis'] = 'Patient Note';
 $lang['direct'] = 'Direct';
 $lang['disable'] = 'Disable';
 $lang['disabled'] = 'Disabled';
@@ -918,7 +918,12 @@ $lang['info'] = 'Info';
 $lang['relation'] = 'Relation';
 $lang['medical_insurance'] = 'Medical Insurance';
 $lang['insurance_company_name'] = 'Insurance Company Name';
-$lang['patient_type'] = 'Patient Type';
+$lang['note_category']    = 'Note Category';
+$lang['category']         = 'Category';
+$lang['subcategory']      = 'Sub-Category';
+$lang['note_subcategory'] = 'Note Sub-Category';
+$lang['note_description'] = 'Note Description';
+$lang['patient_note']     = 'Patient Note';
 
 
 //version 1.1

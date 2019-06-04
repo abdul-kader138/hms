@@ -12,7 +12,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title titlefix"><?php echo $this->lang->line('bed') . " " . $this->lang->line('group') . " " . $this->lang->line('list'); ?></h3>
+                        <h3 class="box-title titlefix"><?php echo $this->lang->line('note_subcategory') . " " .  $this->lang->line('list'); ?></h3>
                         <div class="box-tools pull-right">
                             <?php if ($this->rbac->hasPrivilege('bed', 'can_add')) { ?>
                                 <a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?></a> 
@@ -23,15 +23,15 @@
                     </div>
 
                     <div class="box-body">
-                        <div class="download_label"><?php echo $this->lang->line('bed') . " " . $this->lang->line('group') . " " . $this->lang->line('list'); ?></div>
+                        <div class="download_label"><?php echo $this->lang->line('note_subcategory') . " "  . $this->lang->line('list'); ?></div>
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped table-bordered example">
                                 <thead>
                                     <tr>                                    
-                                        <th><?php echo $this->lang->line('name'); ?></th>
-                                        <th><?php echo $this->lang->line('floor'); ?></th>
-                                        <th><?php echo $this->lang->line('description'); ?></th>
-                                        <th class="text-right"><?php echo $this->lang->line('action'); ?></th>
+                                        <th width="15"><?php echo $this->lang->line('name'); ?></th>
+                                        <th width="15"><?php echo $this->lang->line('category'); ?></th>
+                                        <th width="60"><?php echo $this->lang->line('description'); ?></th>
+                                        <th width="10"><?php echo $this->lang->line('action'); ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,12 +56,7 @@
                                                     <?php echo $value["description"] ?>
                                                 </td>                                                
 
-                                                <td class="mailbox-date pull-right">
-                                                    <?php if ($this->rbac->hasPrivilege('bed', 'can_edit')) { ?>
-                                                        <a  data-target="#myeditModal" onclick="edit(<?php echo $value['id']; ?>)"  class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('edit'); ?>">
-                                                            <i class="fa fa-pencil"></i>
-                                                        </a>
-                                                    <?php } ?>
+                                                <td class="mailbox-date">
                                                     <?php if ($this->rbac->hasPrivilege('bed', 'can_delete')) { ?>
                                                         <a  class="btn btn-default btn-xs" data-toggle="tooltip" title="" onclick="delete_recordById('<?php echo base_url(); ?>admin/setup/bedgroup/delete_bedgroup/<?php echo $value['id']; ?>', '<?php echo $this->lang->line('delete_message') ?>')" data-original-title="<?php echo $this->lang->line('delete') ?>">
                                                             <i class="fa fa-trash"></i>
@@ -92,11 +87,11 @@
 
 </div><!-- /.content-wrapper -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-sm400" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content modal-media-content">
             <div class="modal-header modal-media-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="box-title"> <?php echo $this->lang->line('add') . " " . $this->lang->line('bed') . " " . $this->lang->line('group'); ?></h4> 
+                <h4 class="box-title"> <?php echo $this->lang->line('add') . " " . $this->lang->line('note_subcategory'); ?></h4>
             </div>
             <div class="modal-body pt0 pb0">
                 <div class="row">
@@ -114,7 +109,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1"><?php echo $this->lang->line('floor'); ?></label>
+                                        <label for="exampleInputEmail1"><?php echo $this->lang->line('category'); ?></label>
                                         <span class="req"> *</span>
                                         <select name="floor" class="form-control">
                                             <option value=""><?php echo $this->lang->line('select') ?></option>
@@ -130,7 +125,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1"><?php echo $this->lang->line('description'); ?></label>
-                                        <textarea class="form-control"  name="description" placeholder="" rows="2" placeholder="Enter ..."><?php echo set_value('description'); ?><?php echo set_value('description') ?></textarea>
+                                        <textarea rows="8" class="form-control"  name="description" placeholder="" rows="2" placeholder="Enter ..."><?php echo set_value('description'); ?><?php echo set_value('description') ?></textarea>
                                         <span class="text-danger description"></span>
 
                                     </div>
@@ -151,7 +146,7 @@
 </div>
 
 <div class="modal fade" id="myeditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-sm400" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content modal-media-content">
             <div class="modal-header modal-media-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -185,7 +180,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><?php echo $this->lang->line('description'); ?></label>
-                                <textarea class="form-control" id="description" name="description" placeholder="" rows="2" placeholder="Enter ..."><?php echo set_value('description'); ?><?php echo set_value('description') ?></textarea>
+                                <textarea class="form-control" rows="8" id="description" name="description" placeholder="" rows="2" placeholder="Enter ..."><?php echo set_value('description'); ?><?php echo set_value('description') ?></textarea>
 
                             </div>
                         </div>

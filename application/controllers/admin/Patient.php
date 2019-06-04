@@ -485,6 +485,7 @@ class patient extends Admin_Controller
         }
         $data['bed_list'] = $this->bed_model->bedNoType();
         $data['bedgroup_list'] = $this->bedgroup_model->bedGroupFloor();
+        $data['floor_list'] = $this->floor_model->floor_list();
         $data["marital_status"] = $this->marital_status;
         $data["payment_mode"] = $this->payment_mode;
         $data["bloodgroup"] = $this->blood_group;
@@ -822,20 +823,30 @@ class patient extends Admin_Controller
 
     public function add_diagnosis()
     {
-        $this->form_validation->set_rules('report_type', $this->lang->line('report') . " " . $this->lang->line('type'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('note_title', $this->lang->line('note') . " " . $this->lang->line('title'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('note_description', $this->lang->line('description'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('note_date', $this->lang->line('note') . " " . $this->lang->line('date'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('category', $this->lang->line('category'), 'trim|required|xss_clean');
+        $this->form_validation->set_rules('subcategory', $this->lang->line('subcategory'), 'trim|required|xss_clean');
+
         if ($this->form_validation->run() == FALSE) {
             $msg = array(
-                'report_type' => form_error('report_type'),
-                'description' => form_error('description'),
+                'note_title' => form_error('note_title'),
+                'note_date' => form_error('note_date'),
+                'description' => form_error('note_description'),
+                'category' => form_error('category'),
+                'subcategory' => form_error('subcategory'),
             );
             $array = array('status' => 'fail', 'error' => $msg, 'message' => '');
         } else {
-            $report_date = $this->input->post('report_date');
+            $report_date = $this->input->post('note_date');
             $data = array(
-                'report_type' => $this->input->post("report_type"),
+                'report_type' => $this->input->post("note_title"),
                 'report_date' => date('Y-m-d', $this->customlib->datetostrtotime($report_date)),
                 'patient_id' => $this->input->post("patient"),
-                'description' => $this->input->post("description"),
+                'description' => $this->input->post("note_description"),
+                'category' => $this->input->post("category"),
+                'subcategory' => $this->input->post("subcategory")
             );
             $insert_id = $this->patient_model->add_diagnosis($data);
             if (isset($_FILES["report_document"]) && !empty($_FILES['report_document']['name'])) {

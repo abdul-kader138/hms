@@ -134,4 +134,54 @@ Class Bed_Model extends CI_Model {
         return false;
       }
     }
+
+    public function floor_list($id = null) {
+        $this->db->select()->from('floor');
+        if ($id != null) {
+            $this->db->where('floor.id', $id);
+        } else {
+            $this->db->order_by('floor.id', 'desc');
+        }
+        $query = $this->db->get();
+        if ($id != null) {
+            return $query->row_array();
+        } else {
+            return $query->result_array();
+        }
+    }
+
+
+    public function bedGroup_list($id = null) {
+        $this->db->select()->from('bed_group');
+        if ($id != null) {
+            $this->db->where('bed_group.floor', $id);
+        } else {
+            $this->db->order_by('bed_group.id', 'desc');
+        }
+        $data=array();
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach (($query->result()) as $row) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function bedGroup($id = null) {
+        $this->db->select()->from('bed_group');
+        if ($id != null) {
+            $this->db->where('bed_group.id', $id);
+        } else {
+            $this->db->order_by('bed_group.id', 'desc');
+        }
+        $data=array();
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach (($query->result()) as $row) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }

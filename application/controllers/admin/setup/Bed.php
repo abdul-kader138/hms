@@ -143,5 +143,22 @@ class Bed extends Admin_Controller {
        echo json_encode($json_array); 
     }
 
+
+    public function getNoteSubcategory() {
+        $category_group = $this->input->post('category_group');
+        $active = $this->input->post('active');
+        $result = $this->Bed_Model->bedGroup_list($category_group);
+        echo json_encode($result);
+    }
+
+
+
+    public function getNoteSubcategoryDetails() {
+        $subcategory_group = $this->input->post('subcategory_group');
+        $active = $this->input->post('active');
+        $result = $this->Bed_Model->bedGroup($subcategory_group);
+        echo json_encode($result);
+    }
+
 }
 ?>

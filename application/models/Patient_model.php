@@ -367,8 +367,10 @@ class Patient_model extends CI_Model
     function getDiagnosisDetails($id)
     {
 
-        $query1 = $this->db->select('diagnosis.*')
+        $query1 = $this->db->select('diagnosis.*,bed_group.description as descrip,bed_group.name as subcategory_name,floor.name as category_name')
             ->join('patients', 'patients.id = diagnosis.patient_id', "inner")
+            ->join('bed_group', 'bed_group.id = diagnosis.subcategory', "inner")
+            ->join('floor', 'floor.id = bed_group.floor', "inner")
             ->where("patient_id", $id)
             ->get("diagnosis");
         $result1 = $query1->result_array();

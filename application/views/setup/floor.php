@@ -12,7 +12,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title titlefix"><?php echo $this->lang->line('floor') . " " . $this->lang->line('list'); ?></h3>
+                        <h3 class="box-title titlefix"><?php echo $this->lang->line('note_category') . " " . $this->lang->line('list'); ?></h3>
                         <div class="box-tools pull-right">
                             <?php if ($this->rbac->hasPrivilege('bed', 'can_add')) { ?>
                                 <a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?></a> 
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="box-body">
-                        <div class="download_label"><?php echo $this->lang->line('floor') . " " . $this->lang->line('list'); ?></div>
+                        <div class="download_label"><?php echo $this->lang->line('note_category') . " " . $this->lang->line('list'); ?></div>
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped table-bordered example">
                                 <thead>
@@ -86,7 +86,7 @@
         <div class="modal-content modal-media-content">
             <div class="modal-header modal-media-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="box-title"> <?php echo $this->lang->line('add') . " " . $this->lang->line('floor'); ?></h4> 
+                <h4 class="box-title"> <?php echo $this->lang->line('add') . " " . $this->lang->line('category'); ?></h4>
             </div>
             <div class="modal-body pt0 pb0">
                 <div class="row">
@@ -127,7 +127,7 @@
         <div class="modal-content modal-media-content">
             <div class="modal-header modal-media-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="box-title"> <?php echo $this->lang->line('edit') . " " . $this->lang->line('floor'); ?></h4> 
+                <h4 class="box-title"> <?php echo $this->lang->line('edit') . " " . $this->lang->line('note_category'); ?></h4>
             </div>
             <div class="modal-body pt0 pb0">
                 <div class="row">

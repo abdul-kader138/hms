@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2019 at 11:46 AM
+-- Generation Time: Jun 04, 2019 at 07:57 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -94,7 +94,16 @@ INSERT INTO `bed` (`id`, `name`, `bed_type_id`, `bed_group_id`, `is_active`) VAL
 (8, '', 0, 0, 'no'),
 (9, '', 0, 0, 'no'),
 (10, '', 0, 0, 'no'),
-(11, '', 0, 0, 'no');
+(11, '', 0, 0, 'no'),
+(12, '', 0, 0, 'no'),
+(13, '', 0, 0, 'no'),
+(14, '', 0, 0, 'no'),
+(15, '', 0, 0, 'no'),
+(16, '', 0, 0, 'no'),
+(17, '', 0, 0, 'no'),
+(18, '', 0, 0, 'no'),
+(19, '', 0, 0, 'no'),
+(20, '', 0, 0, 'no');
 
 -- --------------------------------------------------------
 
@@ -115,7 +124,9 @@ CREATE TABLE `bed_group` (
 --
 
 INSERT INTO `bed_group` (`id`, `name`, `description`, `floor`, `is_active`) VALUES
-(1, 'General', 'General', '1', 0);
+(2, 'Findings', '', '3', 0),
+(3, 'Findings:', '', '2', 0),
+(4, 'Testing..........', 'Testing..........', '3', 0);
 
 -- --------------------------------------------------------
 
@@ -371,8 +382,17 @@ CREATE TABLE `diagnosis` (
   `report_type` varchar(200) NOT NULL,
   `document` varchar(200) NOT NULL,
   `description` varchar(400) NOT NULL,
-  `report_date` date NOT NULL
+  `report_date` date NOT NULL,
+  `category` int(11) DEFAULT NULL,
+  `subcategory` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`id`, `patient_id`, `report_type`, `document`, `description`, `report_date`, `category`, `subcategory`) VALUES
+(1, 3, 'gsdgsdfgsfdg', '', 'xcbvcxzbczxbzxbxczbxcb', '2019-06-04', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -528,7 +548,9 @@ CREATE TABLE `floor` (
 --
 
 INSERT INTO `floor` (`id`, `name`, `description`) VALUES
-(1, 'Floor-1', 'Floor-1');
+(1, 'Floor-1', 'Floor-1'),
+(2, 'EXAMINATION (General) ', 'EXAMINATION (General) '),
+(3, 'RADIOGRAPHS (General)', 'RADIOGRAPHS (General)');
 
 -- --------------------------------------------------------
 
@@ -861,7 +883,7 @@ CREATE TABLE `ipd_details` (
 --
 
 INSERT INTO `ipd_details` (`id`, `patient_id`, `height`, `weight`, `bp`, `ipd_no`, `room`, `bed`, `bed_group_id`, `case_type`, `casualty`, `symptoms`, `known_allergies`, `refference`, `cons_doctor`, `amount`, `tax`, `payment_mode`, `date`) VALUES
-(4, 2, NULL, NULL, NULL, 'IPDN1002', NULL, NULL, NULL, 'zxXz11', NULL, NULL, 'ZXXZX111111', NULL, 2, NULL, NULL, NULL, '2019-06-02 13:19:00');
+(5, 3, NULL, NULL, NULL, 'IPDN1001', NULL, NULL, NULL, 'sdgdsgsdg111', NULL, NULL, 'fsafasf11', NULL, 2, NULL, NULL, NULL, '2019-05-28 10:07:00');
 
 -- --------------------------------------------------------
 
@@ -1415,7 +1437,7 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `patient_unique_id`, `admission_date`, `patient_name`, `image`, `mobileno`, `email`, `dob`, `gender`, `marital_status`, `blood_group`, `address`, `guardian_name`, `guardian_relation`, `guardian_address`, `guardian_email`, `is_active`, `patient_type`, `credit_limit`, `organisation`, `old_patient`, `created_at`, `updated_at`, `disable_at`, `note`, `medical_insurance`, `insurance_company_name`, `occupation`) VALUES
-(2, 1002, '0000-00-00 00:00:00', 'bcvbc1', 'uploads/patient_images/2.jpg', '01781870372', 'b@b1.com', '06/05/2019', 'Female', NULL, 'A+', 'vxzvxvz11111', 'Bond-0071111', 'zXXZ11111', 'zxXX1111', NULL, 'yes', 'Inpatient', NULL, NULL, 'Yes', '2019-06-01 09:37:45', '0000-00-00 00:00:00', NULL, 'ZXZXZ111111', NULL, NULL, 'Service1');
+(3, 1001, '0000-00-00 00:00:00', 'Test', NULL, '0178768867711', 'b@b.com', '06/10/2019', 'Male', NULL, 'O+', 'Mohakhali,', 'Bond-00711', 'Test11', '01781870371', NULL, 'yes', 'Inpatient', NULL, NULL, 'Yes', '2019-06-03 07:28:04', '0000-00-00 00:00:00', NULL, 'fhdhfsdhdshfds111', 'Yes', 'cxcfvgsdgsdf', 'Service111');
 
 -- --------------------------------------------------------
 
@@ -1458,6 +1480,30 @@ CREATE TABLE `patient_documents` (
 INSERT INTO `patient_documents` (`id`, `patient_id`, `doc_path`, `created_at`, `updated_at`, `note`, `document_name`, `document_date`) VALUES
 (7, 1, 'uploads/patient_document/7.PNG', '2019-05-29 08:28:53', '2019-05-29 08:28:53', 'dsfdsfsdf', 'Test', '2019-05-01'),
 (8, 2, 'uploads/patient_document/8.docx', '2019-06-01 07:59:24', '2019-06-01 07:59:24', 'xzvzxv', 'xzvz', '2019-06-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_reminder`
+--
+
+CREATE TABLE `patient_reminder` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `note` varchar(200) DEFAULT NULL,
+  `reminder_name` varchar(100) DEFAULT NULL,
+  `reminder_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `patient_reminder`
+--
+
+INSERT INTO `patient_reminder` (`id`, `patient_id`, `created_at`, `updated_at`, `note`, `reminder_name`, `reminder_date`) VALUES
+(11, 3, '2019-06-03 07:10:37', '2019-06-03 07:10:37', 'sdfdsfsd', 'Test', '2019-06-11'),
+(12, 3, '2019-06-03 07:13:02', '2019-06-03 07:13:02', 'cvncnc', 'hdfghgfdh', '2019-06-18');
 
 -- --------------------------------------------------------
 
@@ -1618,7 +1664,7 @@ INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, 
 (138, 24, 'IPD Patients', 'ipd_patient', 1, 1, 1, 1, '2018-10-11 12:44:55'),
 (139, 24, 'Discharged Patients', 'discharged patients', 1, 1, 1, 1, '2018-10-11 06:58:26'),
 (140, 24, 'Consultant Register', 'consultant register', 1, 1, 1, 1, '2018-10-11 06:58:26'),
-(141, 24, 'IPD Diagnosis', 'ipd diagnosis', 1, 1, 1, 1, '2018-10-11 12:19:18'),
+(141, 24, 'IPD Pnote', 'ipd pnote', 1, 1, 1, 1, '2019-06-04 04:22:17'),
 (142, 24, 'IPD Timeline', 'ipd timeline', 1, 1, 1, 1, '2018-10-11 12:19:42'),
 (143, 24, 'Charges', 'charges', 1, 1, 1, 1, '2018-10-11 06:58:26'),
 (144, 24, 'Payment', 'payment', 1, 1, 1, 1, '2018-10-11 06:58:26'),
@@ -1686,7 +1732,8 @@ INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, 
 (211, 14, 'Blood Issue Report', 'blood_issue_report', 1, 0, 0, 0, '2019-03-08 12:27:35'),
 (212, 14, 'Income Report', 'income_report', 1, 0, 0, 0, '2019-03-08 12:27:35'),
 (213, 14, 'Expense Report', 'expense_report', 1, 0, 0, 0, '2019-03-08 12:27:35'),
-(214, 24, 'Document', 'document', 1, 1, 1, 1, '2019-05-29 05:53:22');
+(214, 24, 'Document', 'document', 1, 1, 1, 1, '2019-05-29 05:53:22'),
+(215, 24, 'Reminder', 'reminder', 1, 1, 1, 1, '2019-06-03 05:24:32');
 
 -- --------------------------------------------------------
 
@@ -2653,7 +2700,9 @@ INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_d
 (2, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-05-26 06:17:43'),
 (3, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-05-29 03:18:53'),
 (4, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-05-30 09:11:53'),
-(5, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-06-01 02:59:36');
+(5, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-06-01 02:59:36'),
+(6, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-06-03 03:43:55'),
+(7, 'admin@admin.com', 'Super Admin', '::1', 'Chrome 74.0.3729.169, Windows 10', '2019-06-04 03:05:57');
 
 -- --------------------------------------------------------
 
@@ -2681,7 +2730,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `childs`, `role`, `verification_code`, `is_active`, `created_at`, `updated_at`) VALUES
 (2, 0, 'pat0', 'tuhat1', '', 'patient', '', 'yes', '2019-06-01 06:24:13', '0000-00-00 00:00:00'),
 (3, 0, 'pat0', 'fb0se1', '', 'patient', '', 'yes', '2019-06-01 07:07:17', '0000-00-00 00:00:00'),
-(4, 2, 'pat2', 'wapqoa', '', 'patient', '', 'yes', '2019-06-01 07:20:04', '0000-00-00 00:00:00');
+(5, 3, 'pat3', 'e5myib', '', 'patient', '', 'yes', '2019-06-03 04:08:07', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -3151,6 +3200,12 @@ ALTER TABLE `patient_documents`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `patient_reminder`
+--
+ALTER TABLE `patient_reminder`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `patient_timeline`
 --
 ALTER TABLE `patient_timeline`
@@ -3395,12 +3450,12 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `bed`
 --
 ALTER TABLE `bed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `bed_group`
 --
 ALTER TABLE `bed_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `bed_type`
 --
@@ -3470,7 +3525,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `dispatch_receive`
 --
@@ -3510,7 +3565,7 @@ ALTER TABLE `expense_head`
 -- AUTO_INCREMENT for table `floor`
 --
 ALTER TABLE `floor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `follow_up`
 --
@@ -3580,7 +3635,7 @@ ALTER TABLE `ipd_billing`
 -- AUTO_INCREMENT for table `ipd_details`
 --
 ALTER TABLE `ipd_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `item`
 --
@@ -3700,7 +3755,7 @@ ALTER TABLE `pathology_report`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `patient_charges`
 --
@@ -3711,6 +3766,11 @@ ALTER TABLE `patient_charges`
 --
 ALTER TABLE `patient_documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `patient_reminder`
+--
+ALTER TABLE `patient_reminder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `patient_timeline`
 --
@@ -3735,7 +3795,7 @@ ALTER TABLE `payslip_allowance`
 -- AUTO_INCREMENT for table `permission_category`
 --
 ALTER TABLE `permission_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 --
 -- AUTO_INCREMENT for table `permission_group`
 --
@@ -3870,12 +3930,12 @@ ALTER TABLE `tpa_master`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
